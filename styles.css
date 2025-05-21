@@ -1,0 +1,424 @@
+/* styles.css */
+:root {
+    --primary-color: #007BFF;
+    --secondary-color: #0056b3;
+    --text-color: #222;
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
+    --shadow: 0 2px 10px rgba(0,0,0,0.1);
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(248, 249, 250, 0.95) !important; /* Slightly transparent background */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+/* Add padding to body to prevent content from hiding behind fixed navbar */
+body {
+    padding-top: 56px; /* Height of navbar */
+}
+
+/* Style navbar items */
+.navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-item {
+    margin: 0 10px;
+}
+
+.nav-link {
+    color: var(--text-color) !important;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem !important;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+.nav-item.active .nav-link {
+    color: var(--primary-color) !important;
+}
+
+/* Add smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(248, 249, 250, 0.95) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar-collapse {
+    justify-content: flex-end; /* This ensures the links stay right-aligned */
+}
+
+.navbar-nav {
+    margin-left: 0; /* Remove the auto margins we had before */
+    margin-right: 0;
+}
+
+/* Optional: Add some spacing between the logo and nav items */
+.navbar-brand {
+    margin-right: 2rem;
+}
+
+/* Maintain right alignment on mobile */
+@media (max-width: 576px) {
+    .navbar-collapse {
+        text-align: right;
+    }
+    
+    .navbar-nav {
+        margin-top: 1rem;
+    }
+}
+
+
+
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* Hero Section */
+.hero {
+    background: #222;
+    color: var(--white);
+    text-align: center;
+    padding: 5rem 0;
+}
+
+.hero-logo {
+    max-width: 200px;
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* CTA Button */
+.cta-btn {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    display: inline-block;
+    text-decoration: none;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.cta-btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* How It Works Section */
+.how-it-works {
+    padding: 4rem 0;
+    background: var(--white);
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.step {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.step:hover {
+    transform: translateY(-5px);
+}
+
+/* ROI Calculator */
+.roi-calculator {
+    background: var(--white);
+    padding: 4rem 0;
+}
+
+.calculator-container {
+    background: var(--light-bg);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.input-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.input-group input {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+/* Calculate ROI Button Styles */
+.calculate-btn {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 2rem auto;
+    min-width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.calculate-btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+}
+
+.calculate-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+}
+
+/* Optional: Add a subtle gradient effect */
+.calculate-btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #0056b3 100%);
+}
+
+/* Optional: Add a hover animation */
+.calculate-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%
+    );
+    transition: left 0.5s ease;
+}
+
+.calculate-btn:hover::after {
+    left: 100%;
+}
+
+/* Make sure the button is responsive */
+@media (max-width: 768px) {
+    .calculate-btn {
+        width: 100%;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+
+/* Results Table */
+.comparison-table {
+    overflow-x: auto;
+    margin-top: 2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Translation Panel */
+.translation-panel {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-top: 2rem;
+}
+
+.translation-item {
+    padding: 1rem;
+    border-left: 4px solid var(--primary-color);
+    margin: 1rem 0;
+    background: var(--light-bg);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+/* Solutions Section */
+.solutions {
+    padding: 4rem 0;
+}
+
+.solution-blocks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.solution {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.solution:hover {
+    transform: translateY(-5px);
+}
+
+/* Pricing Section */
+.pricing {
+    background: var(--light-bg);
+    padding: 4rem 0;
+}
+
+.plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.plan {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.plan:hover {
+    transform: translateY(-5px);
+}
+
+.plan strong {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+
+/* WATCH Video Section */ 
+
+.video-grid iframe {
+  width: 100%;
+  height: 300px;
+}
+
+/* Contact Section */
+#contact {
+    background: #313132;
+    color: var(--white);
+    text-align: center;
+    padding: 4rem 0;
+}
+
+#contact a {
+    color: var(--white);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    .input-section {
+        grid-template-columns: 1fr;
+    }
+}

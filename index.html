@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App.ISO - Automate PDF Data Extraction</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+    <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#home">
+            <img src="appiso_logo.png" alt="App.ISO Logo" width="200" height="60">
+        </a>
+
+        <!-- Hamburger menu for mobile -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation links - Note the ml-auto class is moved to navbar-nav -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+          	      <li class="nav-item active">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#roi-calculator">ROI Calculator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#app-iso-in-action">How It Works</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#pricing">Pricing</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="container">
+            <h1>App.ISO</h1>
+            <h2>Automate PDF Data Entry at Scale - </h2>
+            <h2>18X Faster, 5X Cheaper</h2>
+            <p>AI-powered solution for ISOs & MCA Funders. Eliminate manual input, cut costs, and scale effortlessly.</p>
+            <br>
+            <a target="_blank" rel="noopener noreferrer" href="https://calendly.com/YOUR_LINK" class="cta-btn">Book a Live Demo</a>
+        </div>
+    </header>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2>How App.ISO Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3>1. Upload PDF</h3>
+                    <p>Drag & drop the merchant application PDF.</p>
+                </div>
+                <div class="step">
+                    <h3>2. Instant Processing</h3>
+                    <p>Our AI extracts and structures the data in < 30 seconds.</p>
+                </div>
+                <div class="step">
+                    <h3>3. Data Delivered</h3>
+                    <p>Push structured data into your system or export instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section class="roi-calculator" id="roi-calculator">
+        <div class="container">
+            <h2>ROI Calculator</h2>
+            <div class="calculator-container">
+                <div class="input-section">
+                    <div class="input-group">
+                        <label for="dailyPdfConversions">Number of Daily PDF Conversions</label>
+                        <input type="number" id="dailyPdfConversions" value="90">
+                    </div>
+                    <div class="input-group">
+                        <label for="avgWorkdaysPerMonth">Average Workdays per Month</label>
+                        <input type="number" id="avgWorkdaysPerMonth" value="21">
+                    </div>
+                    <div class="input-group">
+                        <label for="timePerAppManual">Time Per App (Manual Entry in minutes)</label>
+                        <input type="number" id="timePerAppManual" value="5">
+                    </div>
+                    <div class="input-group">
+                        <label for="numDataEntrySpecialists">Number of Data Entry Specialists</label>
+                        <input type="number" id="numDataEntrySpecialists" value="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="dataEntrySpecialistAnnualSalary">Average Data Entry Specialist Annual Salary ($)</label>
+                        <input type="number" id="dataEntrySpecialistAnnualSalary" value="38000">
+                    </div>
+                </div>
+                
+                <button class="calculate-btn" onclick="calculateROI()">Calculate ROI</button>
+
+                <div class="results-section">
+                    <div class="comparison-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Label</th>
+                                    <th>Manual</th>
+                                    <th>App.ISO</th>
+                                    <th>Benefit (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Monthly App Volume</td>
+                                    <td id="monthlyAppVolumeManual"></td>
+                                    <td id="monthlyAppVolumeAppISO"></td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Monthly Cost</td>
+                                    <td id="monthlyCostManual"></td>
+                                    <td id="monthlyCostAppISO"></td>
+                                    <td id="monthlyCostBenefit"></td>
+                                </tr>
+                                <tr>
+                                    <td>Cost per App</td>
+                                    <td id="costPerAppManual"></td>
+                                    <td id="costPerAppAppISO"></td>
+                                    <td id="costPerAppBenefit"></td>
+                                </tr>
+                                <tr>
+                                    <td>Time per App (minutes)</td>
+                                    <td id="timePerAppManualDisplay"></td>
+                                    <td id="timePerAppAppISO"></td>
+                                    <td id="timePerAppBenefit"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="translation-panel">
+                        <h3>What These Numbers Mean For Your Business</h3>
+                        <div id="monthlyTranslation" class="translation-item"></div>
+                        <div id="costPerAppTranslation" class="translation-item"></div>
+                        <div id="timeTranslation" class="translation-item"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- Video Section -->
+  <section class="videos" id="app-iso-in-action">
+    <div class="container">
+      <h2>Watch App.ISO in Action</h2>
+      <div class="video-grid">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions">
+        <div class="container">
+            <h2>Tailored for Your Workflow</h2>
+            <div class="solution-blocks">
+                <div class="solution">
+                    <h3>For ISOs</h3>
+                    <p>Send cleaner, faster application files to funders. Process more deals daily without increasing staff.</p>
+                </div>
+                <div class="solution">
+                    <h3>For MCA Funders</h3>
+                    <p>Eliminate your dependency on data entry teams. Slash costs and decision times dramatically.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>Simple, Scalable Pricing</h2>
+            <div class="plans">
+                <div class="plan">
+                    <h3>Basic</h3>
+                    <p><strong>$1,200</strong></p>
+                    <p>Up to 3,000 scans</p>
+                    <p>$0.36/scan beyond</p>
+                </div>
+                <div class="plan">
+                    <h3>Mid</h3>
+                    <p><strong>$2,250</strong></p>
+                    <p>Up to 7,500 scans</p>
+                    <p>$0.30/scan beyond</p>
+                </div>
+                <div class="plan">
+                    <h3>Grande</h3>
+                    <p><strong>$4,000</strong></p>
+                    <p>Up to 15,000 scans</p>
+                    <p>$0.27/scan beyond</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Let's Scale Your Funding Workflow</h2>
+            <p>Schedule a live demo to see how App.ISO can help cut costs and process more deals today.</p>
+            <br>
+            <a target="_blank" rel="noopener noreferrer" href="https://calendly.com/YOUR_LINK" class="cta-btn">Book a Demo Now</a>
+            <br><br>
+            <p>Or email us at <a href="mailto:sales@appiso.ai">sales@appiso.ai</a></p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
